@@ -13,7 +13,7 @@ Features:
   • Most common travel times (month, day, hour)
   • Most popular start/end stations and trips
   • Total and average trip durations
-  • User demographics (user types, gender, birth years)
+  • User demographics (user types, gender, birth years).
 
 Usage Instructions:
 -------------------
@@ -55,4 +55,4 @@ We welcome feedback, ideas, and contributions from the community!
 
 Author:
 -------
-Asem Shtaya
+Asem Shtaya.

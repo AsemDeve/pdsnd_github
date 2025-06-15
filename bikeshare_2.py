@@ -158,14 +158,14 @@ def load_data(city, month, day):
     Returns:
         df - Pandas DataFrame containing filtered city data
     """
-    # map city name to CSV file
+    # map city name to CSV file.
     city_files = {
         'chicago': 'chicago.csv',
         'new york city': 'new_york_city.csv',
         'washington': 'washington.csv'
     }
 
-    # load data file into a dataframe
+    # load data file into a dataframe.
     df = pd.read_csv(city_files[city])
 
     # convert 'Start Time' to datetime
