@@ -8,6 +8,21 @@ CITY_DATA = {
 }
 
 
+def prompt_for_option(options, prompt_label):
+    """Generic prompt to select from options by number or name."""
+    while True:
+        print(f"\nWhich {prompt_label}?")
+        for key, value in options.items():
+            print(f"{key}. {value.title()}")
+        user_input = input(f"Enter the number or name of the {prompt_label}: ").strip().lower()
+        if user_input in options:
+            return options[user_input]
+        elif user_input in [v.lower() for v in options.values()]:
+            return user_input
+        else:
+            print(f"Invalid {prompt_label}. Try again.")
+
+
 def get_filters():
     """
     Asks user to specify a city, and whether to filter by month, day, both or not at all.
@@ -68,71 +83,17 @@ def get_filters():
         print("\nWould you like to filter the data by month, day, both, or not at all?")
         print("1. Month\n2. Day\n3. Both\n4. No filter")
         filter_choice = input("Enter the number or text: ").strip().lower()
-
         if filter_choice in ['1', 'month']:
-            # Month only
-            while True:
-                print("\nWhich month?")
-                for key, value in month_options.items():
-                    print(f"{key}. {value.title()}")
-                month_input = input("Enter the number or name of the month: ").strip().lower()
-                if month_input in month_options:
-                    month = month_options[month_input]
-                    break
-                elif month_input in month_names:
-                    month = month_names[month_input]
-                    break
-                else:
-                    print("Invalid month. Try again.")
+            month = prompt_for_option(month_options, "month")
             day = 'all'
             break
-
         elif filter_choice in ['2', 'day']:
-            # Day only
-            while True:
-                print("\nWhich day?")
-                for key, value in day_options.items():
-                    print(f"{key}. {value.title()}")
-                day_input = input("Enter the number or name of the day: ").strip().lower()
-                if day_input in day_options:
-                    day = day_options[day_input]
-                    break
-                elif day_input in day_names:
-                    day = day_names[day_input]
-                    break
-                else:
-                    print("Invalid day. Try again.")
+            day = prompt_for_option(day_options, "day")
             month = 'all'
             break
-
         elif filter_choice in ['3', 'both']:
-            # Month and day
-            while True:
-                print("\nWhich month?")
-                for key, value in month_options.items():
-                    print(f"{key}. {value.title()}")
-                month_input = input("Enter the number or name of the month: ").strip().lower()
-                if month_input in month_options:
-                    month = month_options[month_input]
-                    break
-                elif month_input in month_names:
-                    month = month_names[month_input]
-                    break
-                else:
-                    print("Invalid month. Try again.")
-            while True:
-                print("\nWhich day?")
-                for key, value in day_options.items():
-                    print(f"{key}. {value.title()}")
-                day_input = input("Enter the number or name of the day: ").strip().lower()
-                if day_input in day_options:
-                    day = day_options[day_input]
-                    break
-                elif day_input in day_names:
-                    day = day_names[day_input]
-                    break
-                else:
-                    print("Invalid day. Try again.")
+            month = prompt_for_option(month_options, "month")
+            day = prompt_for_option(day_options, "day")
             break
 
         elif filter_choice in ['4', 'no filter', 'none']:
@@ -313,20 +274,22 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
+
 def display_raw_data(df):
-    """Ask the user if they want to see 5 rows of raw data and continue until they say 'no' or end of data."""
+    """Display raw data 5 rows at a time upon user request."""
     i = 0
     pd.set_option('display.max_columns', None)  # Display all columns
 
-    while True:
-        raw_data_prompt = input("\nWould you like to see 5 lines of raw data? Enter yes or no: ").strip().lower()
-        if raw_data_prompt != 'yes':
-            break
-        if i >= len(df):
-            print("No more data to display.")
+    while i < len(df):
+        show_data = input("\nWould you like to see 5 lines of raw data? Enter yes or no: ").strip().lower()
+        if show_data != 'yes':
             break
         print(df.iloc[i:i + 5])
         i += 5
+
+    if i >= len(df):
+        print("\nAll available data has been displayed.")
 
 
 def main():
