@@ -46,7 +46,7 @@ def get_filters():
     }
     day_names = {v.lower(): v for v in day_options.values()}
 
-    # Get city input
+    # Get city input.
     while True:
         print("\nSelect a city:")
         for key, value in city_options.items():
@@ -63,7 +63,7 @@ def get_filters():
         else:
             print("Invalid choice. Please enter a number or valid city name.")
 
-    # Filter options
+    # Filter options.
     while True:
         print("\nWould you like to filter the data by month, day, both, or not at all?")
         print("1. Month\n2. Day\n3. Both\n4. No filter")
