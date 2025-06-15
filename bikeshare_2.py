@@ -95,7 +95,7 @@ def get_filters():
             month = prompt_for_option(month_options, "month")
             day = prompt_for_option(day_options, "day")
             break
-   
+
         elif filter_choice in ['4', 'no filter', 'none']:
             month = 'all'
             day = 'all'
@@ -274,20 +274,22 @@ def user_stats(df):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-' * 40)
+
+
 def display_raw_data(df):
-    """Ask the user if they want to see 5 rows of raw data and continue until they say 'no' or end of data."""
+    """Display raw data 5 rows at a time upon user request."""
     i = 0
     pd.set_option('display.max_columns', None)  # Display all columns
 
-    while True:
-        raw_data_prompt = input("\nWould you like to see 5 lines of raw data? Enter yes or no: ").strip().lower()
-        if raw_data_prompt != 'yes':
-            break
-        if i >= len(df):
-            print("No more data to display.")
+    while i < len(df):
+        show_data = input("\nWould you like to see 5 lines of raw data? Enter yes or no: ").strip().lower()
+        if show_data != 'yes':
             break
         print(df.iloc[i:i + 5])
         i += 5
+
+    if i >= len(df):
+        print("\nAll available data has been displayed.")
 
 
 def main():
