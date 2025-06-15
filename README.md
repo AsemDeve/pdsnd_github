@@ -1,17 +1,49 @@
->**Note**: Please **fork** the current Udacity repository so that you will have a **remote** repository in **your** Github account. Clone the remote repository to your local machine. Later, as a part of the project "Post your Work on Github", you will push your proposed changes to the remote repository in your Github account.
 
-### Date created
-Include the date you created this project and README file.
+US Bikeshare Data Exploration - Interactive Console Program
 
-### Project Title
-Replace the Project Title
+This Python script allows users to explore US bikeshare data for three major cities:
+- Chicago
+- New York City
+- Washington
 
-### Description
-Describe what your project is about and what it does
+Features:
+---------
+- Load and filter bikeshare data based on city, month, and/or day of the week.
+- View statistics on:
+  • Most common travel times (month, day, hour)
+  • Most popular start/end stations and trips
+  • Total and average trip durations
+  • User demographics (user types, gender, birth years)
 
-### Files used
-Include the files used
+Usage Instructions:
+-------------------
+1. Run the script using Python 3:
+   python bikeshare.py
 
-### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+2. Follow the prompts to:
+   • Select a city by name or number.
+   • Choose how to filter the data (by month, day, both, or not at all).
+   • View the resulting statistics in the console.
 
+Data Files:
+-----------
+Make sure the following CSV files are in the same directory as the script:
+- chicago.csv
+- new_york_city.csv
+- washington.csv
+
+Dependencies:
+-------------
+- pandas
+- time
+
+Note:
+-----
+• CSV data must include columns like Start Time, Trip Duration, Start Station, End Station, User Type, and optionally Gender and Birth Year.
+
+• The script handles invalid user input and provides guidance to enter valid options.
+
+
+Author:
+-------
+Asem Shtaya
