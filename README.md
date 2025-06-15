@@ -44,6 +44,15 @@ Note:
 • The script handles invalid user input and provides guidance to enter valid options.
 
 
+📢 Open Source Contribution
+-----
+This project is open source and available on GitHub.
+Feel free to explore the code, suggest improvements, or contribute by opening an issue or submitting a pull request.
+
+👉 GitHub Repository: https://github.com/AsemDeve/pdsnd_github
+
+We welcome feedback, ideas, and contributions from the community!
+
 Author:
 -------
 Asem Shtaya
